@@ -57,7 +57,7 @@ def convert_to_csv(**kwargs):
 # 定義 Airflow 的 DAG
 with DAG(
     dag_id='mongodb_to_csv',
-    schedule_interval=timedelta(hours=1),
+    schedule_interval='0 0 * * *',  # 每天凌晨 12:00
     start_date=days_ago(2),
     tags=['andychen'],
     catchup=False,

@@ -31,23 +31,13 @@ default_args = {
     # 'retries': 0,
     # 'retry_delay': timedelta(minutes=5),
 }
-# [END default_args]
-
-# def print_hello():
-#     # ticker = "MSFT"
-#     # msft = yf.Ticker(ticker)
-#     # hist = msft.history(period="max")
-#     # print(type(hist))
-#     # print(hist.shape)
-#     # print(hist)
-#     print("HELLO")
 
 # [START instantiate_dag]
 with DAG(
     dag_id='send-email',
     default_args=default_args,
     description='print a hello',
-    schedule_interval=timedelta(hours=1),
+    schedule_interval='0 0 * * *',  # 每天凌晨 12:00
     start_date=days_ago(2),
     tags=['andychen'],
 ) as dag:
@@ -65,10 +55,6 @@ with DAG(
     測試寄送 email 我要測試!
     
     '''
-    # print_hello_task = PythonOperator(
-    #     task_id = 'print_hello',
-    #     python_callable = print_hello
-    # )
     
     email_task = EmailOperator(
         task_id = 'send_email',
@@ -77,7 +63,6 @@ with DAG(
         html_content = """<h3>Email Test</h3>""",
         dag = dag
     )
-    # print_hello_task >> 
     email_task
 
     # t1, t2 and t3 are examples of tasks created by instantiating operators
