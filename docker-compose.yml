@@ -61,10 +61,10 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
-    - 'C:/Users/andy_chen/Desktop/airflow/dags:/opt/airflow/dags'
-    - 'C:/Users/andy_chen/Desktop/airflow/logs:/opt/airflow/logs'
-    - 'C:/Users/andy_chen/Desktop/airflow/plugins:/opt/airflow/plugins'
-    - 'C:/Users/andy_chen/Desktop/airflow/airflow.cfg:/opt/airflow/airflow.cfg'
+    - 'D:\Python_Project\Airflow/dags:/opt/airflow/dags'
+    - 'D:\Python_Project\Airflow/logs:/opt/airflow/logs'
+    - 'D:\Python_Project\Airflow/plugins:/opt/airflow/plugins'
+    - 'D:\Python_Project\Airflow/airflow.cfg:/opt/airflow/airflow.cfg'
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
